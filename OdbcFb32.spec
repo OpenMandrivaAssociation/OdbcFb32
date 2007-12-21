@@ -17,6 +17,7 @@ BuildRequires:	gcc
 BuildRequires:	glibc-devel
 BuildRequires:	libstdc++6-devel
 BuildRequires:	unixODBC-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 An ODBC driver for Firebird, for use with unixODBC.
