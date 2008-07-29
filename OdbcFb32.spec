@@ -1,6 +1,6 @@
 %define	name OdbcFb32
 %define version 2.0.0142
-%define release %mkrel 4
+%define release %mkrel 6
 
 Summary:	ODBC driver for Firebird
 Name:		%{name}
