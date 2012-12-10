@@ -1,11 +1,7 @@
-%define	name OdbcFb32
-%define version 2.0.0142
-%define release %mkrel 6
-
 Summary:	ODBC driver for Firebird
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		OdbcFb32
+Version:	2.0.0142
+Release:	7
 License:	IDPL
 URL:		http://www.firebirdsql.org/
 Group:		System/Libraries
@@ -15,9 +11,8 @@ ExclusiveArch:	i586
 BuildRequires:	firebird-devel
 BuildRequires:	gcc
 BuildRequires:	glibc-devel
-BuildRequires:	libstdc++6-devel
+BuildRequires:	gcc-c++
 BuildRequires:	unixODBC-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 An ODBC driver for Firebird, for use with unixODBC.
@@ -31,7 +26,7 @@ Documentation for %{name}
 
 %prep
 %setup -q -n ODBC_V2-0-BETA
-%patch0 
+%patch0 -p0
 
 %build
 cd ./OdbcJdbc/Builds/Gcc.lin
@@ -39,8 +34,6 @@ make -f makefile.linux
 cd ../..
 
 %install
-rm -rf %{buildroot}
-
 %{__mkdir_p} %{buildroot}%{_libdir}
 %{__mkdir_p} %{buildroot}%{_docdir}/%{name}
 
@@ -48,9 +41,6 @@ install -m0755 ./OdbcJdbc/Builds/Gcc.lin/Release/libOdbcFb32.so %{buildroot}%{_l
 install -m0644 ./OdbcJdbc/Builds/Gcc.lin/readme.linux %{buildroot}%{_docdir}/%{name}
 install -m0644 ./OdbcJdbc/Install/IDPLicense.txt %{buildroot}%{_docdir}/%{name}
 install -m0644 ./OdbcJdbc/Install/Linux/*.ini %{buildroot}%{_docdir}/%{name}
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(0644,root,root,0755)
@@ -60,4 +50,31 @@ rm -rf %{buildroot}
 %defattr(0644,root,root,0755)
 %doc %{_docdir}/%{name}/*
 
+
+
+
+%changelog
+* Wed Jul 30 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.0.0142-6mdv2009.0
++ Revision: 254388
+- rebuild
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 2.0.0142-4mdv2008.1
++ Revision: 136634
+- restore BuildRoot
+
+  + Thierry Vignaud <tvignaud@mandriva.com>
+    - kill re-definition of %%buildroot on Pixel's request
+
+
+* Wed Nov 22 2006 Marcelo Ricardo Leitner <mrl@mandriva.com> 2.0.0142-4mdv2007.0
++ Revision: 86088
+- Really forces i586 arch.
+- Bumped release.
+- This package won't build on x86_64 for now. FB Community is working on this.
+- Bump release.
+- Avoid arch confusion in BuildRequires.
+- Updated BuildRequires.
+- General cleanup.
+- Do not include the whole libdir, otherwise it will include debug libs.
+- Import OdbcFb32
 
