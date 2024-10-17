@@ -3,7 +3,7 @@ Name:		OdbcFb32
 Version:	2.0.0142
 Release:	7
 License:	IDPL
-URL:		http://www.firebirdsql.org/
+URL:		https://www.firebirdsql.org/
 Group:		System/Libraries
 Source:		OdbcFb32-beta-%{version}-src.tar.bz2
 Patch:		OdbcFb32-libname.diff
