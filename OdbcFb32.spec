@@ -8,6 +8,7 @@ Group:		System/Libraries
 Source:		OdbcFb32-beta-%{version}-src.tar.bz2
 Patch:		OdbcFb32-libname.diff
 ExclusiveArch:	i586
+BuildRequires:	make
 BuildRequires:	firebird-devel
 BuildRequires:	gcc
 BuildRequires:	glibc-devel
